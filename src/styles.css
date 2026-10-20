@@ -1,0 +1,468 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system: "Amber Ember" — warm cream/charcoal base with a single amber-orange accent.
+ * All colors are explicit hex tokens (per exact spec). No blue/purple anywhere.
+ * No background gradients anywhere — flat, matte, solid colors only.
+ */
+
+@theme inline {
+  --font-sans: "Vazirmatn", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Vazirmatn", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-cyan: var(--cyan);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root,
+.dark {
+  --radius: 0.9rem;
+
+  /* رنگ‌های ثابت که در هر دو تم یکسان می‌مانند (پس‌زمینهٔ دایرهٔ پروفایل و...) — زغالی گرم، هماهنگ با پالت جدید */
+  --navy-deep: #14110d;
+  --navy: #241e17;
+
+  --motion-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --shadow-glow: 0 24px 60px -28px color-mix(in oklab, var(--primary) 85%, transparent);
+}
+
+/*
+ * تم روشن «کهربایی سوزان» (Amber Ember — Light):
+ * پس‌زمینه کرم شکلاتی نرم، متن قهوه‌ای زغالی تیره، و یک رنگ شاخص واحد: نارنجی کهربایی.
+ * بدون هیچ گرادیانتی — همه‌چیز تخت و یکدست.
+ */
+:root {
+  --background: #fbf6f0;
+  --foreground: #2c2420;
+
+  --card: #fffaf4;
+  --card-foreground: #2c2420;
+  --popover: #fffaf4;
+  --popover-foreground: #2c2420;
+
+  /* نارنجی کهربایی — تنها رنگ شاخص سایت، بدون گرادیانت یا رنگ دوم */
+  --primary: #e87a2a;
+  --primary-foreground: #fffaf4;
+
+  --secondary: #f1e6db;
+  --secondary-foreground: #2c2420;
+
+  --muted: #f5ece2;
+  --muted-foreground: #7a6d63;
+
+  /* accent همان رنگ primary است — یک رنگ شاخص واحد در کل سایت، نه دو رنگ گرادیانتی */
+  --accent: #e87a2a;
+  --accent-foreground: #fffaf4;
+  --cyan: #e87a2a;
+
+  --destructive: #c9432e;
+  --destructive-foreground: #fffaf4;
+
+  --border: #e4d6c8;
+  --input: #e7dacc;
+  --ring: #e87a2a;
+
+  --chart-1: #e87a2a;
+  --chart-2: #c85f1a;
+  --chart-3: #8b5e34;
+  --chart-4: #f0b429;
+  --chart-5: #a9431e;
+
+  --sidebar: #fbf6f0;
+  --sidebar-foreground: #2c2420;
+  --sidebar-primary: #e87a2a;
+  --sidebar-primary-foreground: #fffaf4;
+  --sidebar-accent: #f1e6db;
+  --sidebar-accent-foreground: #2c2420;
+  --sidebar-border: #e4d6c8;
+  --sidebar-ring: #e87a2a;
+}
+
+/*
+ * تم تیره «کهربایی سوزان» (Amber Ember — Dark):
+ * پس‌زمینه زغالی مخملی گرم، متن کرم روشن، و رنگ شاخص نارنجی شعله‌ور.
+ * بدون هیچ گرادیانتی — همه‌چیز تخت و یکدست.
+ */
+.dark {
+  --background: #1e1a17;
+  --foreground: #f0e8e0;
+
+  --card: #262019;
+  --card-foreground: #f0e8e0;
+  --popover: #221d18;
+  --popover-foreground: #f0e8e0;
+
+  /* نارنجی شعله‌ور — تنها رنگ شاخص سایت در تم تیره */
+  --primary: #f49d37;
+  --primary-foreground: #1e1a17;
+
+  --secondary: #2e2620;
+  --secondary-foreground: #f0e8e0;
+
+  --muted: #2a2319;
+  --muted-foreground: #b9a996;
+
+  /* accent همان رنگ primary است — یک رنگ شاخص واحد، بدون گرادیانت دو رنگ */
+  --accent: #f49d37;
+  --accent-foreground: #1e1a17;
+  --cyan: #f49d37;
+
+  --destructive: #e2604a;
+  --destructive-foreground: #fbf6f0;
+
+  --border: #3a3128;
+  --input: #352c24;
+  --ring: #f49d37;
+
+  --chart-1: #f49d37;
+  --chart-2: #f0b429;
+  --chart-3: #e2604a;
+  --chart-4: #c9832e;
+  --chart-5: #8b5e34;
+
+  --sidebar: #1e1a17;
+  --sidebar-foreground: #f0e8e0;
+  --sidebar-primary: #f49d37;
+  --sidebar-primary-foreground: #1e1a17;
+  --sidebar-accent: #2e2620;
+  --sidebar-accent-foreground: #f0e8e0;
+  --sidebar-border: #3a3128;
+  --sidebar-ring: #f49d37;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+
+  section {
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* عنوان بخش‌ها هنگام اسکرول (منو/لینک) زیر نوار ناوبری ثابت نرود */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  /* جلوگیری از اسکرول افقی ناشی از بلوب‌های تزئینی که از لبهٔ صفحه بیرون می‌زنند (مشکل موبایل) */
+  html,
+  body {
+    overflow-x: clip;
+  }
+}
+
+@utility glass {
+  background-color: color-mix(in oklab, var(--background) 62%, transparent);
+  backdrop-filter: blur(18px);
+  border: 1px solid color-mix(in oklab, var(--primary) 18%, transparent);
+}
+
+@utility glass-card {
+  position: relative;
+  z-index: 1;
+  background-color: color-mix(in oklab, var(--card) 72%, transparent);
+  backdrop-filter: blur(18px);
+  border: 1px solid color-mix(in oklab, var(--primary) 20%, transparent);
+  box-shadow: 0 18px 48px -34px color-mix(in oklab, var(--primary) 90%, transparent);
+}
+
+@utility text-gradient {
+  /* بدون گرادیانت — رنگ تخت و یکدست (نارنجی کهربایی) به‌جای افکت gradient-text */
+  color: var(--primary);
+  padding-bottom: 0.12em;
+}
+
+@utility glow-ring {
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--primary) 35%, transparent),
+    0 0 44px -12px color-mix(in oklab, var(--cyan) 55%, transparent);
+}
+
+@utility section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--primary) 40%, transparent);
+  background: color-mix(in oklab, var(--primary) 12%, transparent);
+  color: var(--cyan);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@utility noise-bg {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+@utility interactive-card {
+  position: relative;
+  isolation: isolate;
+  transform: translateZ(0);
+  transition:
+    transform 220ms var(--motion-ease-out),
+    box-shadow 220ms var(--motion-ease-out),
+    border-color 220ms var(--motion-ease-out);
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-6px);
+    border-color: color-mix(in oklab, var(--cyan) 50%, var(--border));
+    box-shadow: var(--shadow-glow);
+  }
+
+  &:hover::before,
+  &:focus-within::before {
+    opacity: 1;
+  }
+}
+
+@utility stat-card {
+  position: relative;
+  transition:
+    transform 180ms var(--motion-ease-out),
+    border-color 180ms var(--motion-ease-out),
+    box-shadow 180ms var(--motion-ease-out);
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--cyan) 45%, var(--border));
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@utility social-orb {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 180ms var(--motion-ease-out),
+    color 180ms var(--motion-ease-out),
+    background-color 180ms var(--motion-ease-out),
+    box-shadow 180ms var(--motion-ease-out);
+
+  &:hover {
+    box-shadow: 0 14px 30px -16px color-mix(in oklab, var(--cyan) 90%, transparent);
+  }
+}
+
+@utility button-sheen {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  &::after {
+    position: absolute;
+    inset: -40% -55%;
+    z-index: -1;
+    background: linear-gradient(112deg, transparent 38%, color-mix(in oklab, var(--cyan) 45%, transparent) 49%, transparent 60%);
+    content: "";
+    opacity: 0;
+    transform: translateX(-46%);
+    transition:
+      opacity 180ms var(--motion-ease-out),
+      transform 380ms var(--motion-ease-out);
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    opacity: 1;
+    transform: translateX(46%);
+  }
+}
+
+@utility choice-card {
+  position: relative;
+  transition:
+    transform 200ms var(--motion-ease-out),
+    border-color 200ms var(--motion-ease-out),
+    background-color 200ms var(--motion-ease-out),
+    box-shadow 200ms var(--motion-ease-out);
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@utility profile-frame {
+  position: relative;
+  border-radius: 999px;
+  padding: 3px;
+  /* حلقهٔ دور عکس پروفایل: رنگ تخت و یکدست به‌جای گرادیانت */
+  background: var(--primary);
+  transition:
+    transform 320ms var(--motion-ease-out),
+    box-shadow 320ms var(--motion-ease-out);
+
+  &:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--primary) 55%, transparent),
+      0 40px 80px -40px color-mix(in oklab, var(--primary) 90%, transparent);
+  }
+
+  & img {
+    transition: transform 520ms var(--motion-ease-out), filter 520ms var(--motion-ease-out);
+  }
+
+  &:hover img {
+    transform: scale(1.06);
+    filter: saturate(1.1) contrast(1.05);
+  }
+}
+
+/*
+ * گذار نرم و دایره‌ای بین تم روشن/تیره با استفاده از View Transition API.
+ * دایره از نقطهٔ کلیک (--theme-origin-x/y که در ThemeContext تنظیم می‌شود) شروع و باز می‌شود.
+ * در مرورگرهایی که این API را پشتیبانی نمی‌کنند، این بلوک نادیده گرفته می‌شود و تغییر رنگ‌ها
+ * با transition معمولی روی متغیرهای رنگ (پایین‌تر) انجام می‌شود.
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+  animation: theme-reveal 620ms var(--motion-ease-out);
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0% at var(--theme-origin-x, 50%) var(--theme-origin-y, 50%));
+  }
+  to {
+    clip-path: circle(150% at var(--theme-origin-x, 50%) var(--theme-origin-y, 50%));
+  }
+}
+
+/* برای مرورگرهایی که از View Transition API پشتیبانی نمی‌کنند: گذار نرم معمولی روی رنگ‌ها */
+@media not (prefers-reduced-motion: reduce) {
+  body {
+    transition: background-color 300ms var(--motion-ease-out), color 300ms var(--motion-ease-out);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ─── Tech marquee ─── */
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 45s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: center;
+  }
+}
