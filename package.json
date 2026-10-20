@@ -13,7 +13,8 @@
     "typecheck": "tsc --noEmit",
     "build:node": "cross-env NITRO_PRESET=node-server vite build",
     "start": "node .output/server/index.mjs",
-    "start:env": "node --env-file=.env .output/server/index.mjs"
+    "start:env": "node --env-file=.env .output/server/index.mjs",
+    "build:vercel": "cross-env NITRO_PRESET=vercel vite build"
   },
   "overrides": {
     "rolldown": "1.2.1"
@@ -48,9 +49,9 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "@tailwindcss/vite": "^4.2.1",
     "@tanstack/react-query": "^5.101.1",
-    "@tanstack/react-router": "1.170.18",
-    "@tanstack/react-start": "1.168.32",
-    "@tanstack/router-plugin": "1.168.23",
+    "@tanstack/react-router": "1.170.45",
+    "@tanstack/react-start": "1.169.3",
+    "@tanstack/router-plugin": "1.168.47",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
